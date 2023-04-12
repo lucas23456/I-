@@ -63,18 +63,20 @@
           <td id="2">2</td>
           <td id="3">3</td>
           <td id="4">4</td>
-          <td id="5">5</td>
         </tr>
         <tr>
-          <td id="6">6</td>
-          <td id="7">7</td>
-          <td id="8">8</td>
+            <td id="5">5</td>
+            <td id="6">6</td>
+            <td id="7">7</td>
+            <td id="8">8</td>
+          </tr>
+        <tr>
           <td id="9">9</td>
           <td id="10">10</td>
-        </tr>
-        <tr>
           <td id="11">11</td>
           <td id="12">12</td>
+        </tr>
+        <tr>
           <td id="13">13</td>
           <td id="14">14</td>
           <td id="15">15</td>
@@ -94,7 +96,7 @@
       time = 0;
     let generate = function () {
       let array = [
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
       ];
       for (i = 0; i < 16; i++) {
         b = array[i];
@@ -103,7 +105,7 @@
         array[ni] = b;
       }
 
-      for (i = 0; i < 26; i++) {
+      for (i = 0; i < 16; i++) {
         $("#" + (i + 1)).text(array[i]);
       }
     };
