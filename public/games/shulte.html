@@ -56,7 +56,7 @@
     </style>
   </head>
   <body>
-    <div class="game" id="mydiv">
+    <div class="game" id="game">
       <table>
         <tr>
           <td id="1">1</td>
@@ -95,7 +95,7 @@
         </tr>
       </table>
       <p class="status">Вы играете...</p>
-      <button onclick="succes()">Поехали</button>
+      <!-- <button onclick="succes()">Поехали</button> -->
     </div>
  
   <div id="instruction" style=" display: none; align-items: center; height: 100vh; justify-content: center; flex-direction: column;"> 
@@ -109,7 +109,7 @@
  //скрывает таблицу
   
  setTimeout(function() {
-  $('#mydiv').fadeOut('fast');
+  $('#game').fadeOut('fast');
   $('#instruction').css('display', 'flex');
 
  }, 10000);
@@ -157,7 +157,7 @@
     let succes = function (){
       generate()
       
-      $('#mydiv').css('display', 'flex');
+      $('#game').css('display', 'flex');
 
     }
 
@@ -170,6 +170,8 @@
     //    } 
     //    if (count != 25) setTimeout(timer, 1000); 
     //    };
+
+    
 
     $(document).ready(function () {
       generate();
