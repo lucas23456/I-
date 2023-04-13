@@ -98,44 +98,19 @@
       <!-- <button onclick="succes()">Поехали</button> -->
     </div>
  
-  <div id="instruction" style=" display: none; align-items: center; height: 100vh; justify-content: center; flex-direction: column;"> 
-   <p>Инструкция для игры..</p> 
-   <button onclick="succes()">Понял</button>
- </div> 
 
   </body>
 
   <script>
- //скрывает таблицу
   
- setTimeout(function() {
-  $('#game').fadeOut('fast');
-  $('#instruction').css('display', 'flex');
-
- }, 10000);
-
-    let count1 = 0,
-      scores1 = 0,
-      time1 = 0;
-
-    let count2 = 0,
-      scores2 = 0,
-      time2 = 0;
-
-    let count3 = 0,
-      scores3 = 0,
-      time3 = 0;
-
-    let count4 = 0,
-      scores4 = 0,
-      time4 = 0;
-    
-    let count5 = 0,
-      scores5 = 0,
-      time5 = 0;
+  let count = 0,
+      scores = 0,
+      time = 0;
 
 
-    let generate = function () {
+
+
+      let generate = function () {
       let array = [
         1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
         21, 22, 23, 24, 25,
@@ -154,26 +129,22 @@
     };
 
 
-    let succes = function (){
-      generate()
-      
+    timer = () => { 
+        time++;
+        $(".status").text("Вы играете " + time); 
+        if (time == 60) {
+          $(".status").text("Время вышло"); 
+          window.replace("shulte2.html");
+
+          count = 25; 
+        } 
+        if (count != 25) setTimeout(timer, 1000); 
+        };
+
+    let succes = function (){      
       $('#game').css('display', 'flex');
 
-    }
-
-    //  timer = () => { 
-    //    time++;
-    //    $(".status").text("Вы играете " + time); 
-    //    if (time == 60) {
-    //      $(".status").text("Время вышло"); 
-    //      count = 25; 
-    //    } 
-    //    if (count != 25) setTimeout(timer, 1000); 
-    //    };
-
-    
-
-    $(document).ready(function () {
+      $(document).ready(function () {
       generate();
       setTimeout(timer, 1000);
 
@@ -189,7 +160,8 @@
 
           if (count == 25) {
             $(".status").text("Вы победили");
-            generate()
+            window.location.replace("/shulte2.html");
+
           }
           
         }
@@ -201,5 +173,6 @@
 
       });
     });
+    }
 </script>
 </html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Таблица Шульте</title>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <style>
+      body {
+        background-color: #373f90;
+        color: black;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+        overflow: hidden;
+      }
+
+      table {
+        background-color: rgb(255, 255, 255);
+        border: 4px outset black;
+        border-collapse: collapse;
+      }
+
+      td {
+        border: 1px solid black;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        font-size: 1.5em;
+      }
+      td:hover {
+        background-color: #d0d;
+      }
+
+      .game {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        flex-direction: column;
+      }
+      p {
+        margin-left: 30px;
+        color: white;
+        font-weight: 500;
+        letter-spacing: 1px;
+        text-align: center;
+      }
+      .status {
+        color: #0f0;
+      }
+      .scores {
+        color: #ff0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="game" id="game">
+      <table>
+        <tr>
+          <td id="1">1</td>
+          <td id="2">2</td>
+          <td id="3">3</td>
+          <td id="4">4</td>
+          <td id="5">5</td>
+        </tr>
+        <tr>
+          <td id="6">6</td>
+          <td id="7">7</td>
+          <td id="8">8</td>
+          <td id="9">9</td>
+          <td id="10">10</td>
+        </tr>
+        <tr>
+          <td id="11">1</td>
+          <td id="12">2</td>
+          <td id="13">3</td>
+          <td id="14">4</td>
+          <td id="15">5</td>
+        </tr>
+        <tr>
+          <td id="16">1</td>
+          <td id="17">2</td>
+          <td id="18">3</td>
+          <td id="19">4</td>
+          <td id="20">5</td>
+        </tr>
+        <tr>
+          <td id="21">1</td>
+          <td id="22">2</td>
+          <td id="23">3</td>
+          <td id="24">4</td>
+          <td id="25">5</td>
+        </tr>
+      </table>
+      <p class="status">Вы играете...</p>
+      <!-- <button onclick="succes()">Поехали</button> -->
+    </div>
+ 
+  <div id="instruction" style=" display: none; align-items: center; height: 100vh; justify-content: center; flex-direction: column;"> 
+   <p>Инструкция для игры..</p> 
+   <button onclick="succes()">Понял</button>
+ </div> 
+
+  </body>
+
+  <script>
+  
+  let count = 0,
+      scores = 0,
+      time = 0;
+
+
+ //скрывает таблицу
+ setTimeout(function() {
+  $('#game').fadeOut('fast');
+  $('#instruction').css('display', 'flex');
+
+ }, 10000);
+
+    let generate = function () {
+      let array = [
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+        21, 22, 23, 24, 25,
+      ];
+
+      for (i = 0; i < 25; i++) {
+        b = array[i];
+        ni = Math.floor(Math.random() * 24);
+        array[i] = array[ni];
+        array[ni] = b;
+      }
+
+      for (i = 0; i < 25; i++) {
+        $("#" + (i + 1)).text(array[i]);
+      }
+    };
+
+
+    timer = () => { 
+        time++;
+        $(".status").text("Вы играете " + time); 
+        if (time == 60) {
+          $(".status").text("Время вышло"); 
+          count = 25; 
+          window.replace("shulte2.html");
+
+        } 
+        if (count != 25) setTimeout(timer, 1000); 
+        };
+
+    let succes = function (){      
+      $('#game').css('display', 'flex');
+
+      $(document).ready(function () {
+      generate();
+      setTimeout(timer, 1000);
+
+      $("td").click(function () {
+        if (count < 25) {
+          val = +$(this).text();
+          if (val - count != 1) scores -= 5;
+          else {
+            $(this).css("background-color", "purple");
+            count++;
+            scores += 5;
+          }
+
+          if (count == 25) {
+            $(".status").text("Вы победили");
+            window.location.replace("adult/shulte2.html");
+
+          }
+          
+        }
+        $(".scores").text("Очки:" + scores);
+        if (scores > 80) $(".scores").css("color", "#0f0");
+        else if(scores < 80 && scores > 40)$('.scores').css("color", "#ff0");
+        else $(".scores").css("color", "#f00");
+
+
+      });
+    });
+    }
+
+</script>
+</html>
