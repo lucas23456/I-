@@ -112,6 +112,8 @@
    <button onclick="succes()" class="understood__btn">Понял</button>
  </div> 
 
+ <a href="./"></a>
+
   </body>
 
   <script>
@@ -178,7 +180,7 @@
 
           //унга-бунга
 
-          if (count == 1) {
+          if (count == 25) {
 
             $('#game').css('display', 'none');
             $("#instruction").text("Молодец, подожди 10 секунд.");
@@ -193,17 +195,17 @@
           } 
           
         }
+
         $(".scores").text("Очки:" + scores);
         if (scores > 80) $(".scores").css("color", "#0f0");
         else if(scores < 80 && scores > 40)$('.scores').css("color", "#ff0");
         else $(".scores").css("color", "#f00");
 
-
         console.log(scores)
 
       });
     });
-    }
+  }
 
 </script>
 </html>
