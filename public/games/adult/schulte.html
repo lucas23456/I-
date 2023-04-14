@@ -116,7 +116,6 @@
    <button onclick="succes()" class="understood__btn">Понял</button>
  </div> 
 
- <a href="./"></a>
 
   </body>
 
@@ -158,7 +157,7 @@
         if (time == 60) {
           $(".status").text("Время вышло"); 
           count = 25; 
-          window.location.replace("shulte2.html");
+          window.location.replace("schulte2.html");
 
         } 
         if (count != 25) setTimeout(timer, 1000); 
@@ -179,14 +178,14 @@
           if (val - count != 1){
             scores -= 5;
 
-            var notright = new Audio("/public/games/sounds/false.mp3");
+            var notright = new Audio("sound/false.mp3");
 
             notright.play();
 
           }   
 
           else {
-            let right = new Audio("/public/games/sounds/right.mp3");
+            let right = new Audio("sound/right.mp3");
 
             right.play();
 
