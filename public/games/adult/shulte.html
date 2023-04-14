@@ -20,6 +20,7 @@
         background-color: rgb(255, 255, 255);
         border: 4px outset black;
         border-collapse: collapse;
+        cursor: pointer;
       }
 
       td {
@@ -167,9 +168,11 @@
             scores += 5;
           }
 
-          if (count == 25) {
+          //унга-бунга
+
+          if (count == 1) {
             $(".status").text("Вы победили");
-            window.location.replace("adult/shulte2.html");
+            window.location.replace("shulte2.html");
 
           }
           
