@@ -29,9 +29,6 @@
         text-align: center;
         font-size: 1.5em;
       }
-      td:hover {
-        background-color: #d0d;
-      }
 
       .game {
         display: flex;
@@ -148,14 +145,13 @@
           val = +$(this).text();
           if (val - count != 1) scores -= 5;
           else {
-            $(this).css("background-color", "purple");
             count++;
             scores += 5;
           }
 
           if (count == 25) {
             $(".status").text("Вы победили");
-            window.location.replace("/shulte2.html");
+            window.location.replace("shulte5.html");
 
           }
           

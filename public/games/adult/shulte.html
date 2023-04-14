@@ -30,9 +30,6 @@
         text-align: center;
         font-size: 1.5em;
       }
-      td:hover {
-        background-color: #d0d;
-      }
 
       .game {
         display: flex;
@@ -100,7 +97,7 @@
     </div>
  
   <div id="instruction" style=" display: none; align-items: center; height: 100vh; justify-content: center; flex-direction: column;"> 
-   <p>Инструкция для игры..</p> 
+   <p>Покажи и назови все числа по порядку от 1 до 25. Постарайся делать это как можно быстрее и без ошибок»</p> 
    <button onclick="succes()">Понял</button>
  </div> 
 
@@ -163,14 +160,14 @@
           val = +$(this).text();
           if (val - count != 1) scores -= 5;
           else {
-            $(this).css("background-color", "purple");
+            // $(this).css("background-color", "purple");
             count++;
             scores += 5;
           }
 
           //унга-бунга
 
-          if (count == 1) {
+          if (count == 25) {
             $(".status").text("Вы победили");
             window.location.replace("shulte2.html");
 
@@ -182,6 +179,8 @@
         else if(scores < 80 && scores > 40)$('.scores').css("color", "#ff0");
         else $(".scores").css("color", "#f00");
 
+
+        console.log(scores)
 
       });
     });
