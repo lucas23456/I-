@@ -20,6 +20,7 @@
         background-color: rgb(255, 255, 255);
         border: 4px outset black;
         border-collapse: collapse;
+        cursor: pointer;
       }
 
       td {
@@ -50,63 +51,76 @@
       .scores {
         color: #ff0;
       }
+
+      .understood__btn{
+        background-color: #FEDE52;
+        color: #000;
+        width: 100px;
+        height: 50px;
+        font-size: 15px;
+        border-radius: 15%;
+        border: 5px solid #FFF0B3;
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
     <div class="game" id="game">
+      <br>
       <table>
         <tr>
-          <td id="1">1</td>
-          <td id="2">2</td>
-          <td id="3">3</td>
+          <td id="1">3</td>
+          <td id="2">5</td>
+          <td id="3">6</td>
           <td id="4">4</td>
-          <td id="5">5</td>
+          <td id="5">10</td>
         </tr>
         <tr>
-          <td id="6">6</td>
-          <td id="7">7</td>
-          <td id="8">8</td>
-          <td id="9">9</td>
-          <td id="10">10</td>
+          <td id="6">15</td>
+          <td id="7">25</td>
+          <td id="8">9</td>
+          <td id="9">8</td>
+          <td id="10">2</td>
         </tr>
         <tr>
           <td id="11">1</td>
-          <td id="12">2</td>
-          <td id="13">3</td>
-          <td id="14">4</td>
-          <td id="15">5</td>
+          <td id="12">24</td>
+          <td id="13">20</td>
+          <td id="14">11</td>
+          <td id="15">13</td>
         </tr>
         <tr>
-          <td id="16">1</td>
-          <td id="17">2</td>
-          <td id="18">3</td>
-          <td id="19">4</td>
-          <td id="20">5</td>
+          <td id="16">16</td>
+          <td id="17">17</td>
+          <td id="18">7</td>
+          <td id="19">8</td>
+          <td id="20">12</td>
         </tr>
         <tr>
-          <td id="21">1</td>
-          <td id="22">2</td>
-          <td id="23">3</td>
+          <td id="21">23</td>
+          <td id="22">18</td>
+          <td id="23">19</td>
           <td id="24">4</td>
-          <td id="25">5</td>
+          <td id="25">14</td>
         </tr>
       </table>
-      <p class="status">Вы играете...</p>
+
+      
+      <p class="status" id="status">Вы играете...</p>
       <!-- <button onclick="succes()">Поехали</button> -->
     </div>
 
-
+    <div id="instruction" style=" display: none; align-items: center; height: 100vh; justify-content: center; flex-direction: column; color: #fff;"> 
+      <p style="width: 500px; text-align: center;" id="text">Молодец, подожди 10 секунд.</p> 
+    </div> 
   </body>
 
-  <script>
-  
+  <script>  
   let count = 0,
       scores = 0,
       time = 0;
 
-
-
-      let generate = function () {
+    let generate = function () {
       let array = [
         1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
         21, 22, 23, 24, 25,
@@ -124,8 +138,6 @@
       }
     };
 
-    generate()
-
 
     timer = () => { 
         time++;
@@ -133,11 +145,11 @@
         if (time == 60) {
           $(".status").text("Время вышло"); 
           count = 25; 
+          window.location.replace("shulte.html");
 
         } 
         if (count != 25) setTimeout(timer, 1000); 
         };
-
 
       $(document).ready(function () {
       generate();
@@ -146,27 +158,51 @@
       $("td").click(function () {
         if (count < 25) {
           val = +$(this).text();
-          if (val - count != 1) scores -= 5;
+          if (val - count != 1){
+            scores -= 5;
+
+            var notright = new Audio("/public/games/sounds/false.mp3");
+
+            notright.play();
+
+          }   
+
           else {
-            count++;
+            let right = new Audio("/public/games/sounds/right.mp3");
+
+            right.play();
+
+              count++;
             scores += 5;
           }
 
+          //унга-бунга
+
           if (count == 25) {
+
+            $('#game').css('display', 'none');
+            $("#instruction").css('display', 'flex');
             $(".status").text("Вы победили");
 
-            //вывод графика 
+            setTimeout(function() {
 
-          }
+              window.location.replace("schulte.html");
+
+            }, 10000);
+
+          } 
           
         }
+
         $(".scores").text("Очки:" + scores);
         if (scores > 80) $(".scores").css("color", "#0f0");
         else if(scores < 80 && scores > 40)$('.scores').css("color", "#ff0");
         else $(".scores").css("color", "#f00");
 
+        console.log(scores)
 
       });
     });
+
 </script>
 </html>
