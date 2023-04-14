@@ -151,9 +151,13 @@
             scores += 5;
           }
 
-          if (count == 1) {
+          if (count == 25) {
             $(".status").text("Вы победили");
-            window.location.replace("schulte3.html");
+            setTimeout(function() {
+
+              window.location.replace("schulte3.html");
+
+            }, 10000);
 
           }
           

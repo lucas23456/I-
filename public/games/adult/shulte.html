@@ -51,54 +51,65 @@
       .scores {
         color: #ff0;
       }
+
+      .understood__btn{
+        background-color: #FEDE52;
+        color: #000;
+        width: 100px;
+        height: 50px;
+        font-size: 15px;
+        border-radius: 15%;
+        border: 5px solid #FFF0B3;
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
     <div class="game" id="game">
       <table>
         <tr>
-          <td id="1">1</td>
-          <td id="2">2</td>
-          <td id="3">3</td>
+          <td id="1">3</td>
+          <td id="2">5</td>
+          <td id="3">6</td>
           <td id="4">4</td>
-          <td id="5">5</td>
+          <td id="5">10</td>
         </tr>
         <tr>
-          <td id="6">6</td>
-          <td id="7">7</td>
-          <td id="8">8</td>
-          <td id="9">9</td>
-          <td id="10">10</td>
+          <td id="6">15</td>
+          <td id="7">25</td>
+          <td id="8">9</td>
+          <td id="9">8</td>
+          <td id="10">2</td>
         </tr>
         <tr>
           <td id="11">1</td>
-          <td id="12">2</td>
-          <td id="13">3</td>
-          <td id="14">4</td>
-          <td id="15">5</td>
+          <td id="12">24</td>
+          <td id="13">20</td>
+          <td id="14">11</td>
+          <td id="15">13</td>
         </tr>
         <tr>
-          <td id="16">1</td>
-          <td id="17">2</td>
-          <td id="18">3</td>
-          <td id="19">4</td>
-          <td id="20">5</td>
+          <td id="16">16</td>
+          <td id="17">17</td>
+          <td id="18">7</td>
+          <td id="19">8</td>
+          <td id="20">12</td>
         </tr>
         <tr>
-          <td id="21">1</td>
-          <td id="22">2</td>
-          <td id="23">3</td>
+          <td id="21">23</td>
+          <td id="22">18</td>
+          <td id="23">19</td>
           <td id="24">4</td>
-          <td id="25">5</td>
+          <td id="25">14</td>
         </tr>
       </table>
-      <p class="status">Вы играете...</p>
+      <p class="status" id="status" style="display: none;">Вы играете...</p>
       <!-- <button onclick="succes()">Поехали</button> -->
     </div>
  
-  <div id="instruction" style=" display: none; align-items: center; height: 100vh; justify-content: center; flex-direction: column;"> 
-   <p>Покажи и назови все числа по порядку от 1 до 25. Постарайся делать это как можно быстрее и без ошибок»</p> 
-   <button onclick="succes()">Понял</button>
+  <div id="instruction" style=" display: none; align-items: center; height: 100vh; justify-content: center; flex-direction: column; color: #fff;"> 
+   <p style="width: 500px; text-align: center;">Покажи и назови все числа по порядку от 1 до 25. Постарайся делать это как можно быстрее и без ошибок»</p> 
+   <button onclick="succes()" class="understood__btn">Понял</button>
  </div> 
 
   </body>
@@ -150,6 +161,7 @@
 
     let succes = function (){      
       $('#game').css('display', 'flex');
+      $("#status").css('display', 'flex')
 
       $(document).ready(function () {
       generate();
@@ -160,18 +172,25 @@
           val = +$(this).text();
           if (val - count != 1) scores -= 5;
           else {
-            // $(this).css("background-color", "purple");
-            count++;
+              count++;
             scores += 5;
           }
 
           //унга-бунга
 
-          if (count == 25) {
-            $(".status").text("Вы победили");
-            window.location.replace("shulte2.html");
+          if (count == 1) {
 
-          }
+            $('#game').css('display', 'none');
+            $("#instruction").text("Молодец, подожди 10 секунд.");
+            $(".status").text("Вы победили");
+
+            setTimeout(function() {
+
+              window.location.replace("schulte2.html");
+
+            }, 10000);
+
+          } 
           
         }
         $(".scores").text("Очки:" + scores);
