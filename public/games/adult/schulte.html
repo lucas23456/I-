@@ -65,8 +65,11 @@
     </style>
   </head>
   <body>
-    <div class="game" id="game">
-      <h2 style="color: #fff;" id="acquainted">Ознакомься с таблицей 🙂</h2>
+    <div class="game" id="game">      
+      <h2 style="color: #fff;">Таблица №1</h2>
+
+      <h2 style="color: #fff;" id="acquainted">Ознакомься с таблицей. У тебя 10 секунд🙂</h2>
+
       <br>
       <table>
         <tr>
@@ -159,6 +162,11 @@
           count = 25; 
           window.location.replace("schulte2.html");
 
+          localStorage.setItem('count1', count);
+          localStorage.setItem('score1', scores);
+          localStorage.setItem('time1', time);
+
+
         } 
         if (count != 25) setTimeout(timer, 1000); 
         };
@@ -201,6 +209,11 @@
             $("#instruction").text("Молодец, подожди 10 секунд.");
             $(".status").text("Вы победили");
 
+            localStorage.setItem('count1', count);
+            localStorage.setItem('score1', scores);
+            localStorage.setItem('time1', time);
+
+
             setTimeout(function() {
 
               window.location.replace("schulte2.html");
@@ -216,7 +229,6 @@
         else if(scores < 80 && scores > 40)$('.scores').css("color", "#ff0");
         else $(".scores").css("color", "#f00");
 
-        console.log(scores)
 
       });
     });

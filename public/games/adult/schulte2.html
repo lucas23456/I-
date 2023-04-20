@@ -66,6 +66,8 @@
   </head>
   <body>
     <div class="game" id="game">
+      <h2 style="color: #fff;">Таблица №2</h2>
+
       <br>
       <table>
         <tr>
@@ -116,9 +118,9 @@
   </body>
 
   <script>  
-  let count = 0,
-      scores = 0,
-      time = 0;
+  let count2 = 0,
+      scores2 = 0,
+      time2 = 0;
 
     let generate = function () {
       let array = [
@@ -140,15 +142,20 @@
 
 
     timer = () => { 
-        time++;
-        $(".status").text("Вы играете " + time); 
-        if (time == 60) {
+        time2++;
+        $(".status").text("Вы играете " + time2); 
+        if (time2 == 60) {
           $(".status").text("Время вышло"); 
-          count = 25; 
+          count2 = 25; 
           window.location.replace("schulte3.html");
 
+          localStorage.setItem('count2', count2);
+          localStorage.setItem('score3', scores2);
+          localStorage.setItem('time4', time2);
+
+
         } 
-        if (count != 25) setTimeout(timer, 1000); 
+        if (count2 != 25) setTimeout(timer, 1000); 
         };
 
       $(document).ready(function () {
@@ -156,12 +163,12 @@
       setTimeout(timer, 1000);
 
       $("td").click(function () {
-        if (count < 25) {
+        if (count2 < 25) {
           val = +$(this).text();
-          if (val - count != 1){
-            scores -= 5;
+          if (val - count2 != 1){
+            scores2 -= 5;
 
-            var notright = new Audio("sound/false.mp3");
+            let notright = new Audio("sound/false.mp3");
 
             notright.play();
 
@@ -172,17 +179,22 @@
 
             right.play();
 
-              count++;
-            scores += 5;
+              count2++;
+            scores2 += 5;
           }
 
           //унга-бунга
 
-          if (count == 25) {
+          if (count2 == 25) {
 
             $('#game').css('display', 'none');
             $("#instruction").css('display', 'flex');
             $(".status").text("Вы победили");
+
+            localStorage.setItem('count2', count2);
+            localStorage.setItem('score2', scores2);
+            localStorage.setItem('time2', time2);
+
 
             setTimeout(function() {
 
@@ -194,12 +206,11 @@
           
         }
 
-        $(".scores").text("Очки:" + scores);
-        if (scores > 80) $(".scores").css("color", "#0f0");
-        else if(scores < 80 && scores > 40)$('.scores').css("color", "#ff0");
+        $(".scores").text("Очки:" + scores2);
+        if (scores2 > 80) $(".scores").css("color", "#0f0");
+        else if(scores2 < 80 && scores2 > 40)$('.scores').css("color", "#ff0");
         else $(".scores").css("color", "#f00");
 
-        console.log(scores)
 
       });
     });

@@ -66,6 +66,8 @@
   </head>
   <body>
     <div class="game" id="game">
+      <h2 style="color: #fff;">Таблица №4</h2>
+
       <br>
       <table>
         <tr>
@@ -116,9 +118,9 @@
   </body>
 
   <script>  
-  let count = 0,
-      scores = 0,
-      time = 0;
+  let count4 = 0,
+      scores4 = 0,
+      time4 = 0;
 
     let generate = function () {
       let array = [
@@ -140,15 +142,21 @@
 
 
     timer = () => { 
-        time++;
-        $(".status").text("Вы играете " + time); 
-        if (time == 60) {
+        time4++;
+        $(".status").text("Вы играете " + time4); 
+        if (time4 == 60) {
           $(".status").text("Время вышло"); 
-          count = 25; 
+          count4 = 25; 
+
+          localStorage.setItem('count4', count4);
+          localStorage.setItem('score4', scores4);
+          localStorage.setItem('time4', time4);
+
+
           window.location.replace("schulte5.html");
 
         } 
-        if (count != 25) setTimeout(timer, 1000); 
+        if (count4 != 25) setTimeout(timer, 1000); 
         };
 
       $(document).ready(function () {
@@ -156,10 +164,10 @@
       setTimeout(timer, 1000);
 
       $("td").click(function () {
-        if (count < 25) {
+        if (count4 < 25) {
           val = +$(this).text();
-          if (val - count != 1){
-            scores -= 5;
+          if (val - count4 != 1){
+            scores4 -= 5;
 
             var notright = new Audio("sound/false.mp3");
 
@@ -172,17 +180,23 @@
 
             right.play();
 
-              count++;
-            scores += 5;
+              count4++;
+            scores4 += 5;
           }
 
           //унга-бунга
 
-          if (count == 25) {
+          if (count4 == 25) {
 
             $('#game').css('display', 'none');
             $("#instruction").css('display', 'flex');
             $(".status").text("Вы победили");
+
+            localStorage.setItem('count4', count4);
+            localStorage.setItem('score4', scores4);
+            localStorage.setItem('time4', time4);
+
+
 
             setTimeout(function() {
 
@@ -194,12 +208,10 @@
           
         }
 
-        $(".scores").text("Очки:" + scores);
-        if (scores > 80) $(".scores").css("color", "#0f0");
-        else if(scores < 80 && scores > 40)$('.scores').css("color", "#ff0");
+        $(".scores").text("Очки:" + scores4);
+        if (scores4 > 80) $(".scores").css("color", "#0f0");
+        else if(scores4 < 80 && scores4 > 40)$('.scores').css("color", "#ff0");
         else $(".scores").css("color", "#f00");
-
-        console.log(scores)
 
       });
     });
