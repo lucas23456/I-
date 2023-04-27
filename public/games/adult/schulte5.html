@@ -126,7 +126,7 @@
       let array = [
         1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
         21, 22, 23, 24, 25,
-      ];
+      ];  
 
       for (i = 0; i < 25; i++) {
         b = array[i];
@@ -147,6 +147,10 @@
         if (time5 == 60) {
           $(".status").text("Время вышло"); 
           count5 = 25; 
+          localStorage.setItem('count5', count5);
+          localStorage.setItem('score5', scores5);
+          localStorage.setItem('time5', time5);
+
 
         }  
         if (count5 != 25) setTimeout(timer, 1000); 
@@ -185,9 +189,14 @@
             $("#instruction").css('display', 'flex');
             $(".status").text("Вы победили");
 
+            localStorage.setItem('count5', count5);
+            localStorage.setItem('score5', scores5);
+            localStorage.setItem('time5', time5);
+
+
             setTimeout(function() {
 
-              window.location.replace("schulte.html");
+              window.location.replace("chart.html");
 
             }, 10000);
 

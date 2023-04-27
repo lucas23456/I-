@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Тест на внимание</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <canvas id="myChart"></canvas>
+  <script>
+
+    var time1 = localStorage.getItem('time1');
+    var time2 = localStorage.getItem('time2');
+    var time3 = localStorage.getItem('time3');
+    var time4 = localStorage.getItem('time4');
+    var time5 = localStorage.getItem('time5');
+
+
+    // Получаем данные из теста на внимание
+    const data = {
+      labels: ['','Таблица 1', 'Таблица 2', 'Таблица 3', 'Таблица 4', 'Таблица 5'],
+      times: [5 ,60,55,50,45,40,35, 30, 25, 20, 15, 10, 5]
+    };
+
+    // Получаем контекст для рисования на элементе canvas
+    const ctx = document.getElementById('myChart').getContext('2d');
+
+    // Создаем объект Chart и передаем ему контекст для рисования
+    const myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: data.labels,
+        datasets: [{
+          label: 'Кривая истощаемости (утомляемости)',
+          data: data.times,
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+              suggestedMin: 5
+            }
+          }]
+        }
+      }
+    });
+
+    // Обновляем значения времени для всех таблиц
+    data.times[1] = time1
+    data.times[2] = time2
+    data.times[3] = time3
+    data.times[4] = time4
+    data.times[5] = time5
+
+    // Обновляем данные в объекте Chart
+    myChart.data.datasets[0].data = data.times;
+    myChart.update();
+
+
+    let effectwork = time1.toString() + time2.toString() + time3.toString() + time4.toString() + time5.toString()
+  </script>
+</body>
+</html>
