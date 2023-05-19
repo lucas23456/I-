@@ -162,9 +162,9 @@
           count = 25; 
           window.location.replace("schulte2.html");
 
-          localStorage.setItem('count1', count);
-          localStorage.setItem('score1', scores);
-          localStorage.setItem('time1', time);
+          localStorage.setItem('count1', count1.toString());
+          localStorage.setItem('score1', scores1.toString());
+          localStorage.setItem('time1', time1.toString());
 
 
         } 
@@ -209,10 +209,9 @@
             $("#instruction").text("Молодец, подожди 10 секунд.");
             $(".status").text("Вы победили");
 
-            localStorage.setItem('count1', count);
-            localStorage.setItem('score1', scores);
-            localStorage.setItem('time1', time);
-
+            localStorage.setItem('count1', count1.toString());
+            localStorage.setItem('score1', scores1.toString());
+            localStorage.setItem('time1', time1.toString());
 
             setTimeout(function() {
 

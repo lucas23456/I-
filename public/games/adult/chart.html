@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Тест на внимание</title>
+  <title>Результаты</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
           body {
@@ -9,11 +9,16 @@
         font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
           Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
           sans-serif;
-        overflow: hidden;
+
+
       }
       .myChart{
         display: flex;
         justify-content: center;
+      }
+
+      .results{
+        text-align: center;
       }
   </style>
 </head>
@@ -21,13 +26,43 @@
   <div style="display: flex; justify-content: center; align-items: center; height: 100vh; width: 100vw; margin: 0 auto;">
     <canvas id="myChart" class="myChart" style="width: 100px;"></canvas>
   </div>
+
+  <p style="text-align: center;"><img src="/public/images/tablica.jpeg" alt="" ></p>
+
+  <br><br>
+
+  <div class="results"> 
+    <h1>Результат ребенка</h1> 
+    <div class="effectwork">
+    <h2>Эфективность:</h2>
+    <p id="effectwork"></p>
+  </div>
+  <div class="workability" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <h2>Степень врабатываемости:</h2>
+    <p id="workability"></p>
+
+    <p style="width: 400px; text-align: justify;">Результат меньше 1,0 – показатель хорошей врабатываемости,
+      соответственно, чем выше 1,0 данный показатель, тем больше испытуемому
+      требуется подготовка к основной работе.</p>
+  </div>
+  <div class="mentalStability" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <h2>Психическая устойчивость:</h2>
+    <p id="mentalStability"></p>
+    <p style="width: 400px; text-align: justify;">Показатель результата меньше 1,0 говорит о хорошей психической
+      устойчивости, соответственно, чем выше данный показатель, тем хуже
+      психическая устойчивость испытуемого к выполнению заданий.</p>
+  </div>
+</div>
+
+<h3></h3>
+
   <script>
 
-    var time1 = localStorage.getItem('time1');
-    var time2 = localStorage.getItem('time2');
-    var time3 = localStorage.getItem('time3');
-    var time4 = localStorage.getItem('time4');
-    var time5 = localStorage.getItem('time5');
+    var time1 = parseInt(localStorage.getItem('time1')) 
+    var time2 = parseInt(localStorage.getItem('time2')) 
+    var time3 = parseInt(localStorage.getItem('time3')) 
+    var time4 = parseInt(localStorage.getItem('time4')) 
+    var time5 = parseInt(localStorage.getItem('time5')) 
 
 
     // Получаем данные из теста на внимание
@@ -47,8 +82,8 @@
         datasets: [{
           label: 'Кривая истощаемости (утомляемости)',
           data: data.times,
-          backgroundColor: 'rgba(255, 99, 132, 0.2)',
-          borderColor: 'rgba(255, 99, 132, 1)',
+          backgroundColor: 'white',
+          borderColor: 'red',
           borderWidth: 1
         }]
       },
@@ -79,7 +114,18 @@
 
     myChart.canvas.parentNode.style.width = '900px';
 
-    let effectwork = time1.toString() + time2.toString() + time3.toString() + time4.toString() + time5.toString()
-  </script>
+    let effectwork = time1 + time2 + time3 + time4 + time5;
+
+    let workability = time1 / effectwork;
+
+    let mentalStability = time4 / effectwork
+
+    document.getElementById("effectwork").innerHTML = effectwork
+    document.getElementById("workability").innerHTML = workability
+    document.getElementById("mentalStability").innerHTML = mentalStability
+
+
+    
+    </script>
 </body>
 </html>

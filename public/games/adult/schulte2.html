@@ -149,9 +149,9 @@
           count2 = 25; 
           window.location.replace("schulte3.html");
 
-          localStorage.setItem('count2', count2);
-          localStorage.setItem('score3', scores2);
-          localStorage.setItem('time4', time2);
+          localStorage.setItem('count2', count2.toString());
+          localStorage.setItem('score2', scores2.toString());
+          localStorage.setItem('time2', time2.toString());
 
 
         } 
@@ -191,10 +191,9 @@
             $("#instruction").css('display', 'flex');
             $(".status").text("Вы победили");
 
-            localStorage.setItem('count2', count2);
-            localStorage.setItem('score2', scores2);
-            localStorage.setItem('time2', time2);
-
+            localStorage.setItem('count2', count2.toString());
+            localStorage.setItem('score2', scores2.toString());
+            localStorage.setItem('time2', time2.toString());
 
             setTimeout(function() {
 

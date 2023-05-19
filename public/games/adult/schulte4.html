@@ -148,9 +148,9 @@
           $(".status").text("Время вышло"); 
           count4 = 25; 
 
-          localStorage.setItem('count4', count4);
-          localStorage.setItem('score4', scores4);
-          localStorage.setItem('time4', time4);
+            localStorage.setItem('count4', count4.toString());
+            localStorage.setItem('score4', scores4.toString());
+            localStorage.setItem('time4', time4.toString());
 
 
           window.location.replace("schulte5.html");
@@ -192,9 +192,10 @@
             $("#instruction").css('display', 'flex');
             $(".status").text("Вы победили");
 
-            localStorage.setItem('count4', count4);
-            localStorage.setItem('score4', scores4);
-            localStorage.setItem('time4', time4);
+            localStorage.setItem('count4', count4.toString());
+            localStorage.setItem('score4', scores4.toString());
+            localStorage.setItem('time4', time4.toString());
+
 
 
 

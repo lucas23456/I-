@@ -147,9 +147,10 @@
         if (time5 == 60) {
           $(".status").text("Время вышло"); 
           count5 = 25; 
-          localStorage.setItem('count5', count5);
-          localStorage.setItem('score5', scores5);
-          localStorage.setItem('time5', time5);
+
+            localStorage.setItem('count5', count5.toString());
+            localStorage.setItem('score5', scores5.toString());
+            localStorage.setItem('time5', time5.toString());
 
 
         }  
@@ -189,9 +190,9 @@
             $("#instruction").css('display', 'flex');
             $(".status").text("Вы победили");
 
-            localStorage.setItem('count5', count5);
-            localStorage.setItem('score5', scores5);
-            localStorage.setItem('time5', time5);
+            localStorage.setItem('count5', count5.toString());
+            localStorage.setItem('score5', scores5.toString());
+            localStorage.setItem('time5', time5.toString());
 
 
             setTimeout(function() {
